@@ -1,0 +1,10 @@
+{
+  "name": "counter-of-main-frameworks",
+  "private": true,
+  "description": "没有用过其他框架，就不要瞎BB",
+  "author": "fengshangwuqi <fengshanguwqi@gmail.com>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
+}
