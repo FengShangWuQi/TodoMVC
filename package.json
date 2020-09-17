@@ -1,10 +1,37 @@
 {
-  "name": "counter-of-main-frameworks",
   "private": true,
-  "description": "没有用过其他框架，就不要瞎BB",
+  "name": "TodoMVC",
+  "description": "主流框架构建的 Todo apps",
   "author": "fengshangwuqi <fengshanguwqi@gmail.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write '**/*.{js,ts,tsx,json,md}'"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "pre-push": "yarn tsc",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "jsxBracketSameLine": true,
+    "arrowParens": "avoid"
+  },
+  "devDependencies": {
+    "@fengshangwuqi/dev-deps": "1.0.16",
+    "@fengshangwuqi/eslint-config": "1.0.23",
+    "@fengshangwuqi/ts-config": "1.0.2"
   },
   "license": "MIT"
 }
