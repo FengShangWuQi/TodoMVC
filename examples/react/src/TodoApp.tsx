@@ -9,13 +9,14 @@ import React, {
 } from "react";
 import { fromEvent } from "rxjs";
 import { filter as rxFilter, map as rxMap } from "rxjs/operators";
+import { getType } from "typesafe-actions";
 
-import { ITodoState, initTodos, todoReducer } from "./TodoReducer";
-import { ITodoAction, ActionType } from "./TodoAction";
+import { todosReducer, TodosState } from "./reducer";
+import { TodoAction, todoActions } from "./actions";
 
 interface ITodoContext {
-  todos: ITodoState[];
-  dispatch: React.Dispatch<ITodoAction>;
+  todos: TodosState[];
+  dispatch: React.Dispatch<TodoAction>;
 }
 
 const TodoContext = createContext({} as ITodoContext);
@@ -30,7 +31,7 @@ const TodoList = () => {
   const handleDelete = useCallback(
     (todoID: string) => {
       dispatch({
-        type: ActionType.DELETE_TODO,
+        type: getType(todoActions.delete),
         payload: {
           todoID,
         },
@@ -81,7 +82,7 @@ const AddTodo = () => {
     e.preventDefault();
 
     dispatch({
-      type: ActionType.ADD_TODO,
+      type: getType(todoActions.add),
       payload: {
         task: inputVal,
       },
@@ -103,7 +104,9 @@ const AddTodo = () => {
 };
 
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initTodos);
+  const [todos, dispatch] = useReducer(todosReducer, [
+    { todoID: "0", task: "1", completed: false },
+  ]);
 
   return (
     <TodoProvider value={{ todos, dispatch }}>
