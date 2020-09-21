@@ -16,7 +16,7 @@ import { todosReducer, TodosState } from "./reducer";
 import { TodoAction, todoActions } from "./actions";
 
 interface ITodoContext {
-  todos: TodosState[];
+  todos: TodosState;
   dispatch: React.Dispatch<TodoAction>;
 }
 
