@@ -28,17 +28,14 @@ const TodoList = () => {
   const { todos, dispatch } = useTodo();
   const ref = useRef<HTMLUListElement>(null);
 
-  const handleDelete = useCallback(
-    (todoID: string) => {
-      dispatch({
-        type: getType(todoActions.delete),
-        payload: {
-          todoID,
-        },
-      });
-    },
-    [dispatch],
-  );
+  const handleDelete = useCallback((todoID: string) => {
+    dispatch({
+      type: getType(todoActions.delete),
+      payload: {
+        todoID,
+      },
+    });
+  }, []);
 
   useEffect(() => {
     if (!ref.current) {
