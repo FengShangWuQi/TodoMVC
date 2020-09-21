@@ -10,6 +10,7 @@ import React, {
 import { fromEvent } from "rxjs";
 import { filter as rxFilter, map as rxMap } from "rxjs/operators";
 import { getType } from "typesafe-actions";
+import { v4 as uuidv4 } from "uuid";
 
 import { todosReducer, TodosState } from "./reducer";
 import { TodoAction, todoActions } from "./actions";
@@ -100,10 +101,12 @@ const AddTodo = () => {
   );
 };
 
+const initTodo = (task: string) => {
+  return [{ todoID: uuidv4(), task, completed: false }];
+};
+
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todosReducer, [
-    { todoID: "0", task: "1", completed: false },
-  ]);
+  const [todos, dispatch] = useReducer(todosReducer, "1", initTodo);
 
   return (
     <TodoProvider value={{ todos, dispatch }}>
