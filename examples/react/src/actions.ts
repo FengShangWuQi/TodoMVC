@@ -1,6 +1,8 @@
-import { ActionType, createAction } from "typesafe-actions";
+import { ActionType, createAsyncAction } from "typesafe-actions";
 import produce from "immer";
 import { v4 as uuidv4 } from "uuid";
+
+import { actor, asyncActor } from "./actor";
 
 export interface Todo {
   todoID: string;
@@ -8,9 +10,17 @@ export interface Todo {
   completed: boolean;
 }
 
+const todosActor = actor("todo");
+const todosAsyncActor = asyncActor("todo");
+
+const completedTodoAsync = todosAsyncActor<{ todoID: string }, Todo[], Error>(
+  "completed",
+);
+
 export const todoActions = {
-  add: createAction("@todos/ADD")<{ task: string }>(),
-  delete: createAction("@todos/REMOVE")<{ todoID: string }>(),
+  completedAsync: completedTodoAsync.success,
+  add: todosActor<{ task: string }>("add"),
+  delete: todosActor<{ todoID: string }>("delete"),
 };
 
 export type TodoAction = ActionType<typeof todoActions>;

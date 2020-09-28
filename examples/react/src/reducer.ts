@@ -6,6 +6,7 @@ export const todosReducer = (state: Todo[], action: TodoAction) =>
   createReducer<Todo[], TodoAction>([])
     .handleAction(todoActions.add, addTodo)
     .handleAction(todoActions.delete, deleteTodo)
+    .handleAction(todoActions.completedAsync, state => state)
     .handlers[action.type](state, action);
 
 export type TodosState = StateType<typeof todosReducer>;
