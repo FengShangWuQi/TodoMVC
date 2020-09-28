@@ -1,6 +1,6 @@
-import { ActionType, createAsyncAction } from "typesafe-actions";
+import { ActionType } from "typesafe-actions";
 import produce from "immer";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { actor, asyncActor } from "./actor";
 
@@ -30,7 +30,7 @@ export const addTodo = (
   action: ActionType<typeof todoActions.add>,
 ) =>
   produce(state, draft => {
-    draft.push({ ...action.payload, todoID: uuidv4(), completed: false });
+    draft.push({ ...action.payload, todoID: nanoid(), completed: false });
   });
 
 export const deleteTodo = (

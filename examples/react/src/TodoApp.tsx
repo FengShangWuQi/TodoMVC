@@ -10,7 +10,7 @@ import React, {
 import { fromEvent } from "rxjs";
 import { filter as rxFilter, map as rxMap } from "rxjs/operators";
 import { getType } from "typesafe-actions";
-import { v4 as uuidv4 } from "uuid";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { todosReducer, TodosState } from "./reducer";
 import { TodoAction, todoActions } from "./actions";
@@ -102,7 +102,7 @@ const AddTodo = () => {
 };
 
 const initTodo = (task: string) => {
-  return [{ todoID: uuidv4(), task, completed: false }];
+  return [{ todoID: nanoid(), task, completed: false }];
 };
 
 export const TodoApp = () => {
