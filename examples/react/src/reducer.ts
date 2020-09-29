@@ -1,12 +1,11 @@
-import { createReducer, StateType } from "typesafe-actions";
+import { combineReducers } from "redux";
+import { createReducer } from "typesafe-actions";
 
 import { addTodo, deleteTodo, todoActions, TodoAction, Todo } from "./actions";
 
-export const todosReducer = (state: Todo[], action: TodoAction) =>
-  createReducer<Todo[], TodoAction>([])
-    .handleAction(todoActions.add, addTodo)
-    .handleAction(todoActions.delete, deleteTodo)
-    .handleAction(todoActions.completedAsync, state => state)
-    .handlers[action.type](state, action);
+const todosReducer = createReducer<Todo[], TodoAction>([])
+  .handleAction(todoActions.add, addTodo)
+  .handleAction(todoActions.delete, deleteTodo)
+  .handleAction(todoActions.completedAsync, state => state);
 
-export type TodosState = StateType<typeof todosReducer>;
+export const rootReducers = combineReducers({ todos: todosReducer });

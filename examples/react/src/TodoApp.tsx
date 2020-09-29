@@ -1,29 +1,25 @@
-import React, {
-  useRef,
-  useState,
-  useReducer,
-  useContext,
-  useCallback,
-  useEffect,
-  createContext,
-} from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { fromEvent } from "rxjs";
 import { filter as rxFilter, map as rxMap } from "rxjs/operators";
 import { getType } from "typesafe-actions";
-import { nanoid } from "@reduxjs/toolkit";
 
-import { todosReducer, TodosState } from "./reducer";
-import { TodoAction, todoActions } from "./actions";
+import { useStore } from "./ctx";
+import { Todo, TodoAction, todoActions } from "./actions";
 
-interface ITodoContext {
-  todos: TodosState;
-  dispatch: React.Dispatch<TodoAction>;
-}
+const useTodo = () => {
+  const { getState, subscribe, dispatch } = useStore();
+  const [todos, setTodos] = useState<Todo[]>(getState().todos || []);
 
-const TodoContext = createContext({} as ITodoContext);
-const TodoProvider = TodoContext.Provider;
+  useEffect(() => {
+    const unsubscribe = subscribe(() => {
+      setTodos(getState().todos);
+    });
 
-const useTodo = () => useContext(TodoContext);
+    return unsubscribe;
+  }, []);
+
+  return { todos, dispatch: dispatch as React.Dispatch<TodoAction> };
+};
 
 const TodoList = () => {
   const { todos, dispatch } = useTodo();
@@ -101,17 +97,11 @@ const AddTodo = () => {
   );
 };
 
-const initTodo = (task: string) => {
-  return [{ todoID: nanoid(), task, completed: false }];
-};
-
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todosReducer, "1", initTodo);
-
   return (
-    <TodoProvider value={{ todos, dispatch }}>
+    <>
       <TodoList />
       <AddTodo />
-    </TodoProvider>
+    </>
   );
 };

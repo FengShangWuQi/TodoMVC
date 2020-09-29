@@ -13,8 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "pre-push": "yarn tsc",
+      "pre-commit": "pretty-quick --staged && yarn tsc",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
