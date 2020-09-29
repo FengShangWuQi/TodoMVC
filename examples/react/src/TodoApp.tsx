@@ -4,25 +4,13 @@ import { filter as rxFilter, map as rxMap } from "rxjs/operators";
 import { getType } from "typesafe-actions";
 
 import { useStore } from "./ctx";
-import { Todo, TodoAction, todoActions } from "./actions";
-
-const useTodo = () => {
-  const { getState, subscribe, dispatch } = useStore();
-  const [todos, setTodos] = useState<Todo[]>(getState().todos || []);
-
-  useEffect(() => {
-    const unsubscribe = subscribe(() => {
-      setTodos(getState().todos);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  return { todos, dispatch: dispatch as React.Dispatch<TodoAction> };
-};
+import { todoActions } from "./actions";
 
 const TodoList = () => {
-  const { todos, dispatch } = useTodo();
+  const {
+    state: { todos },
+    dispatch,
+  } = useStore();
   const ref = useRef<HTMLUListElement>(null);
 
   const handleDelete = useCallback((todoID: string) => {
@@ -69,7 +57,7 @@ const TodoList = () => {
 };
 
 const AddTodo = () => {
-  const { dispatch } = useTodo();
+  const { dispatch } = useStore();
   const [inputVal, setInputVal] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
