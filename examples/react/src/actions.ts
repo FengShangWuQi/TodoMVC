@@ -1,6 +1,6 @@
 import { ActionType } from "typesafe-actions";
 import produce from "immer";
-import { nanoid } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 
 import { actor, asyncActor } from "./actor";
 
