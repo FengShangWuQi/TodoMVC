@@ -1,8 +1,6 @@
-import { ActionType } from "typesafe-actions";
+import { createAction, createAsyncAction, ActionType } from "typesafe-actions";
 import produce from "immer";
 import { nanoid } from "nanoid";
-
-import { actor, asyncActor } from "./actor";
 
 export interface Todo {
   todoID: string;
@@ -10,20 +8,22 @@ export interface Todo {
   completed: boolean;
 }
 
-const todosActor = actor("todo");
-const todosAsyncActor = asyncActor("todo");
-
-const completedTodoAsync = todosAsyncActor<{ todoID: string }, Todo[], Error>(
-  "completed",
-);
+export const fetchTodosAsync = createAsyncAction(
+  "@todo/FETCH_REQUEST",
+  "@todo/FETCH_SUCCESS",
+  "@todo/FETCH_FAILURE",
+  "@todo/FETCH_CANCEL",
+)<undefined, Todo[], Error, undefined>();
 
 export const todoActions = {
-  completedAsync: completedTodoAsync.success,
-  add: todosActor<{ task: string }>("add"),
-  delete: todosActor<{ todoID: string }>("delete"),
+  fetchAsync: fetchTodosAsync,
+  add: createAction("@todo/ADD")<{ task: string }>(),
+  delete: createAction("@todo/DELETE")<{ todoID: string }>(),
 };
 
 export type TodoAction = ActionType<typeof todoActions>;
+
+export type RootAction = TodoAction;
 
 export const addTodo = (
   state: Todo[],

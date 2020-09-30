@@ -1,10 +1,22 @@
 import { compose, createStore, applyMiddleware } from "redux";
+import { createEpicMiddleware } from "redux-observable";
 import logger from "redux-logger";
-import { StateType } from "typesafe-actions";
 
-import { rootReducers } from "./reducer";
+import { RootState, rootReducers } from "./reducer";
+import { RootAction } from "./actions";
+import { rootEpic } from "./epics";
+import { Services, services } from "./services";
 
-const middlewares = [logger];
+export const epicMiddleware = createEpicMiddleware<
+  RootAction,
+  RootAction,
+  RootState,
+  Services
+>({
+  dependencies: services,
+});
+
+const middlewares = [epicMiddleware, logger];
 
 const composeEnhancers =
   (process.env.NODE_ENV === "development" &&
@@ -16,4 +28,4 @@ const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
 export const store = createStore(rootReducers, {}, enhancer);
 
-export type RootState = StateType<typeof rootReducers>;
+epicMiddleware.run(rootEpic);

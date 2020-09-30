@@ -86,6 +86,14 @@ const AddTodo = () => {
 };
 
 export const TodoApp = () => {
+  const { dispatch } = useStore();
+
+  useEffect(() => {
+    dispatch({
+      type: getType(todoActions.fetchAsync.request),
+    });
+  }, []);
+
   return (
     <>
       <TodoList />

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState, createContext } from "react";
 
-import { RootState } from "./store";
+import { RootState } from "./reducer";
+import { RootAction } from "./actions";
 
 const StoreContext = createContext({} as any);
 export const StoreProvider = StoreContext.Provider;
@@ -20,5 +21,5 @@ export const useStore = () => {
     return unsubscribe;
   }, []);
 
-  return { state, dispatch: storeCtx.dispatch };
+  return { state, dispatch: storeCtx.dispatch as React.Dispatch<RootAction> };
 };
