@@ -5,9 +5,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "dependencies": {
     "immer": "7.0.9",
     "nanoid": "3.1.12",
