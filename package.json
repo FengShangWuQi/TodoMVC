@@ -3,6 +3,9 @@
   "name": "TodoMVC",
   "description": "主流框架构建的 Todo apps",
   "author": "fengshangwuqi <fengshanguwqi@gmail.com>",
+  "workspaces": [
+    "examples/*"
+  ],
   "scripts": {
     "format": "prettier --write '**/*.{js,ts,tsx,json,md}'"
   },
