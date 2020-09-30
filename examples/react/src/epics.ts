@@ -3,9 +3,9 @@ import { from, of } from "rxjs";
 import { takeUntil, filter, switchMap, map, catchError } from "rxjs/operators";
 import { isActionOf } from "typesafe-actions";
 
-import { fetchTodosAsync, RootAction } from "./actions";
+import { RootAction } from "./actions";
 import { RootState } from "./reducer";
-import { Services } from "./services";
+import { Services, fetchTodosAsync } from "./client";
 
 export const fetchTodosEpic: Epic<
   RootAction,

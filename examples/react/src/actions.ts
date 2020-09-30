@@ -1,19 +1,8 @@
-import { createAction, createAsyncAction, ActionType } from "typesafe-actions";
+import { createAction, ActionType } from "typesafe-actions";
 import produce from "immer";
 import { nanoid } from "nanoid";
 
-export interface Todo {
-  todoID: string;
-  task: string;
-  completed: boolean;
-}
-
-export const fetchTodosAsync = createAsyncAction(
-  "@todo/FETCH_REQUEST",
-  "@todo/FETCH_SUCCESS",
-  "@todo/FETCH_FAILURE",
-  "@todo/FETCH_CANCEL",
-)<undefined, Todo[], Error, undefined>();
+import { fetchTodosAsync, Todo } from "./client";
 
 export const todoActions = {
   fetchAsync: fetchTodosAsync,

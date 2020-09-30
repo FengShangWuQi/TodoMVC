@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import { StateType, createReducer } from "typesafe-actions";
 
-import { addTodo, deleteTodo, todoActions, TodoAction, Todo } from "./actions";
+import { addTodo, deleteTodo, todoActions, TodoAction } from "./actions";
+import { Todo } from "./client";
 
 const todosReducer = createReducer<Todo[], TodoAction>([])
   .handleAction(todoActions.add, addTodo)

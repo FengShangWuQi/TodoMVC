@@ -5,7 +5,7 @@ import logger from "redux-logger";
 import { RootState, rootReducers } from "./reducer";
 import { RootAction } from "./actions";
 import { rootEpic } from "./epics";
-import { Services, services } from "./services";
+import { Services, services } from "./client";
 
 export const epicMiddleware = createEpicMiddleware<
   RootAction,
