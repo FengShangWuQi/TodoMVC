@@ -4,6 +4,11 @@ import { nanoid } from "nanoid";
 
 import { fetchTodosAsync, Todo } from "./client";
 
+/*
+ * TODO: ts 模板字面量可以对 @todo 进行重构
+ * https://www.infoq.cn/article/kHLmigWZ3fCyEdLQcvkD
+ */
+
 export const todoActions = {
   fetchAsync: fetchTodosAsync,
   add: createAction("@todo/ADD")<{ task: string }>(),
