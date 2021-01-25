@@ -63,14 +63,16 @@ const AddTodo = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch({
-      type: getType(todoActions.add),
-      payload: {
-        task: inputVal,
-      },
-    });
+    if (inputVal) {
+      dispatch({
+        type: getType(todoActions.add),
+        payload: {
+          task: inputVal,
+        },
+      });
 
-    setInputVal("");
+      setInputVal("");
+    }
   };
 
   return (
