@@ -23,8 +23,8 @@
     "arrowParens": "avoid"
   },
   "devDependencies": {
-    "@fengshangwuqi/dev-deps": "1.0.21",
-    "@fengshangwuqi/ts-config": "1.0.2"
+    "@fengshangwuqi/dev-deps": "1.0.23",
+    "@fengshangwuqi/ts-config": "1.0.4"
   },
   "license": "MIT"
 }
