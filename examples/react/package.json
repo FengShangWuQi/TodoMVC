@@ -1,6 +1,6 @@
 {
+  "private": true,
   "name": "React",
-  "version": "0.0.0",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -42,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "license": "MIT"
+  }
 }
