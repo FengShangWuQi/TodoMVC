@@ -182,6 +182,13 @@
     ts-node "9.1.1"
     typescript "4.1.3"
 
+"@fengshangwuqi/logger@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/@fengshangwuqi/logger/download/@fengshangwuqi/logger-1.0.5.tgz#e125b573fd4e3b46a63646950596cbf027d05b9b"
+  integrity sha1-4SW1c/1OO0amNkaVBZbL8CfQW5s=
+  dependencies:
+    chalk "4.1.0"
+
 "@fengshangwuqi/ts-config@1.0.4":
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/@fengshangwuqi/ts-config/download/@fengshangwuqi/ts-config-1.0.4.tgz#dc37730999ee6444912c40c5ddb3b39bca92591d"
@@ -192,6 +199,13 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/fs-extra@9.0.6":
+  version "9.0.6"
+  resolved "https://registry.npm.taobao.org/@types/fs-extra/download/@types/fs-extra-9.0.6.tgz#488e56b77299899a608b8269719c1d133027a6ab"
+  integrity sha1-SI5Wt3KZiZpgi4JpcZwdEzAnpqs=
+  dependencies:
+    "@types/node" "*"
+
 "@types/minimatch@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -201,6 +215,11 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
+
+"@types/node@*":
+  version "14.14.22"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-14.14.22.tgz#0d29f382472c4ccf3bd96ff0ce47daf5b7b84b18"
+  integrity sha1-DSnzgkcsTM872W/wzkfa9be4Sxg=
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -661,6 +680,16 @@ find-versions@^4.0.0:
   integrity sha1-PFflc7+XdpuMuN8Wk0tieRXaSWU=
   dependencies:
     semver-regex "^3.1.2"
+
+fs-extra@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.npm.taobao.org/fs-extra/download/fs-extra-9.1.0.tgz?cache=0&sync_timestamp=1611075413359&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
+  integrity sha1-WVRGDHZKjaIJS6NVS/g55rmnyG0=
+  dependencies:
+    at-least-node "^1.0.0"
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
 
 fs-extra@^9.0.0:
   version "9.0.1"
