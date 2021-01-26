@@ -1,1 +1,1 @@
-> # TodoMVC
+> # TodoApp

@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "TodoMVC",
-  "description": "主流框架构建的 Todo apps",
+  "name": "TodoApp",
+  "description": "主流框架构建的 TodoApp",
   "author": "fengshangwuqi <fengshanguwqi@gmail.com>",
   "scripts": {
     "format": "prettier --write '**/*.{js,ts,tsx,json,md}'"

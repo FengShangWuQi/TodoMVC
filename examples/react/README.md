@@ -1,1 +1,1 @@
-> ## React & TodoMVC
+> ## React & TodoApp

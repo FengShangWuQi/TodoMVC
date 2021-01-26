@@ -1,1 +1,1 @@
-> ## Vue & TodoMVC
+> ## Vue & TodoApp
